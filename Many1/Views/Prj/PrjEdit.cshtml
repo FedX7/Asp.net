@@ -1,0 +1,72 @@
+﻿@using Many1.Models
+@model Project
+@{
+    ViewBag.Title = "PrjEdit";
+}
+
+<html>
+<head>
+    <script src="~/Scripts/Js/Val.js"></script>
+    
+</head>
+<body>
+    <form name='form' method="post" onsubmit='return validate()'>
+
+
+        @Html.HiddenFor(model => model.Id)
+
+        <div class="editor-label">
+            @Html.LabelFor(model => model.Name)
+        </div>
+        <div class="editor-field">
+            @Html.EditorFor(model => model.Name)
+            @Html.ValidationMessageFor(model => model.Name)
+        </div>
+
+        <div class="editor-label">
+            @Html.LabelFor(model => model.Customer)
+        </div>
+        <div class="editor-field">
+            @Html.EditorFor(model => model.Customer)
+            @Html.ValidationMessageFor(model => model.Customer)
+        </div>
+
+        <div class="editor-label">
+            @Html.LabelFor(model => model.Performer)
+        </div>
+        <div class="editor-field">
+            @Html.EditorFor(model => model.Performer)
+            @Html.ValidationMessageFor(model => model.Performer)
+        </div>
+
+        <div class="editor-label">
+            @Html.LabelFor(model => model.Priority)
+        </div>
+        <div class="editor-field">
+            @Html.EditorFor(model => model.Priority)
+            @Html.ValidationMessageFor(model => model.Priority)
+        </div>
+
+
+
+
+
+        <div class="editor-label"><b>Лидер</b></div>
+        @foreach (Worker c in ViewBag.Workers)
+        {
+            <input type="radio" name="Leader" value="@c.Name" @(Model.Leader.Contains(c.Name) ? "checked=\"checked\"" : "") />@c.Name <br />
+        }
+
+        <div class="editor-label"><b>Исполнители</b></div>
+        @foreach (Worker c in ViewBag.Workers)
+        {
+            <input type="checkbox" name="selectedWorkers" value="@c.Id" @(Model.Workers.Contains(c) ? "checked=\"checked\"" : "") />@c.Name <br />
+        }
+        <input name="DateStart" type="date">
+        <input name="DateEnd" type="date">
+        <p>
+            <input type="submit" value="Сохранить" />
+        </p>
+    </form>
+</body>
+</html>

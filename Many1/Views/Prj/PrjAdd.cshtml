@@ -1,0 +1,68 @@
+﻿@using Many1.Models
+@model Project
+@{
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+
+<!DOCTYPE html>
+<html>
+<head>
+    <script src="~/Scripts/Js/Val.js"></script>
+</head>
+
+<body>
+    <h3>Форма добавления проекта</h3>
+    <form name='form' method="post" onsubmit='return validate()'>
+        <table>
+            <tr>
+                <td><input type="hidden" name="Leader" value=" " /> </td>
+            </tr>
+            <div class="editor-label">
+                @Html.LabelFor(model => model.Name)
+            </div>
+            <div class="editor-field">
+                @Html.EditorFor(model => model.Name)
+                @Html.ValidationMessageFor(model => model.Name)
+            </div>
+            <div class="editor-label">
+                @Html.LabelFor(model => model.Customer)
+            </div>
+            <div class="editor-field">
+                @Html.EditorFor(model => model.Customer)
+                @Html.ValidationMessageFor(model => model.Customer)
+            </div>
+            <div class="editor-label">
+                @Html.LabelFor(model => model.Performer)
+            </div>
+            <div class="editor-field">
+                @Html.EditorFor(model => model.Performer)
+                @Html.ValidationMessageFor(model => model.Performer)
+            </div>
+            <div class="editor-label">
+                @Html.LabelFor(model => model.Priority)
+            </div>
+            <div class="editor-field">
+                @Html.EditorFor(model => model.Priority)
+                @Html.ValidationMessageFor(model => model.Priority)
+            </div>
+
+        </table>
+        <div class="editor-label">
+            @Html.LabelFor(model => model.DateStart)
+        </div>
+        <div class="editor-field">
+            @Html.EditorFor(model => model.DateStart)
+            @Html.ValidationMessageFor(model => model.DateStart)
+        </div>
+        <div class="editor-label">
+            @Html.LabelFor(model => model.DateEnd)
+        </div>
+        <div class="editor-field">
+            @Html.EditorFor(model => model.DateEnd)
+            @Html.ValidationMessageFor(model => model.DateEnd)
+
+            <input type="submit" value="Добавить">
+
+    </form>
+</body>
+</html>

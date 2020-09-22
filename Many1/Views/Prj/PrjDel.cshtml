@@ -1,0 +1,29 @@
+﻿@using Many1.Models
+@model Project
+
+
+
+
+<!DOCTYPE html>
+<html>
+<head>
+    <meta name="viewport" content="width=device-width" />
+    <title>Удаление проекта</title>
+</head>
+<body>
+    <div>
+        <h3>Форма удаления проекта</h3>
+        <form method="post" action="">
+            <input type="hidden" value="@Model.Id" name="Id" />
+            <table>
+                <tr>
+                    <td><p>Вы уверены что хотите удалить проект?</p></td>
+
+                </tr>
+
+                <tr><td><input type="submit" value="Удалить навсегда" /> </td><td></td></tr>
+            </table>
+        </form>
+    </div>
+</body>
+</html>

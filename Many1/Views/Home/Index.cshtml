@@ -1,0 +1,133 @@
+﻿@model IEnumerable<Many1.Models.Project>
+
+
+@{
+    ViewBag.Title = "Index";
+}
+
+    <style>
+        table {
+            font-family: "Lucida Sans Unicode", "Lucida Grande", Sans-Serif;
+            font-size: 14px;
+            border-collapse: collapse;
+            text-align: center;
+            
+        }
+
+
+
+        th, td {
+            border-style: solid;
+            border-width: 0 1px 1px 0;
+            border-color: white;
+            padding: 10px;
+        }
+
+        td {
+            background: #D8E6F3;
+        }
+
+            th:first-child, td:first-child {
+                text-align: left;
+            }
+        }
+    </style>
+<fieldset>
+    <legend>Информация</legend>
+    <td><p><a href="/Prj/PrjAdd">Добавить проект</a></p></td>
+
+    <table>
+
+        <tr>
+            <td>
+                @Html.ActionLink("Название проекта", "Index", new { sortOrder = ViewBag.NameSortParm })
+            </td>
+
+            <td>
+                @Html.ActionLink("Приоритет", "Index", new { sortOrder = ViewBag.PrioritySortParm })
+            </td>
+            <td><p>Компания заказчик</p></td>
+            <td><p>Компания исполнитель</p></td>
+            <td><p>Руководитель</p></td>
+            <td><p>Список исполнителей</p></td>
+            <td>
+                @Html.ActionLink("Дата начала", "Index", new { sortOrder = ViewBag.DateStartSortParm })
+            </td>
+            <td>
+                @Html.ActionLink("Дата окончания", "Index", new { sortOrder = ViewBag.DateEndSortParm })
+            </td>
+        </tr>
+
+
+
+        @foreach (var i in Model)
+        {
+    <tr>
+        <td><p>@i.Name</p></td>
+
+        <td><p>@i.Priority</p></td>
+        <td><p>@i.Customer</p></td>
+        <td><p>@i.Performer</p></td>
+        <td><p>@i.Leader</p></td>
+        <td>
+            @foreach (var q in i.Workers)
+            {
+
+
+                <p>@q.Name</p>
+
+
+
+            }
+        </td>
+        <td><p>@i.DateStart</p></td>
+        <td><p>@i.DateEnd</p></td>
+        <td><p><a href="/Prj/PrjEdit/@i.Id">Редактировать</a></p></td>
+        <td><p><a href="/Prj/PrjDel/@i.Id">Удалить</a></p></td>
+    </tr>
+
+        }
+
+    </table>
+
+    <td><p><a href="/Worker/WorkerAdd">Добавить работника</a></p></td>
+    <table>
+
+        <tr>
+            <td><p>Имя работника</p></td>
+            <td><p>Фамилия работника</p></td>
+            <td><p>Отчество работника</p></td>
+            <td><p>Email работника</p></td>
+            <td><p>Проекты работника</p></td>
+
+
+        </tr>
+
+
+
+        @foreach (var q in ViewBag.Workers)
+        {
+    <tr>
+        <td><p>@q.Name</p></td>
+        <td><p>@q.Surname</p></td>
+        <td><p>@q.Patronymic</p></td>
+        <td><p>@q.Email</p></td>
+        <td>
+            @foreach (var c in q.Projects)
+            {
+
+
+                <p>@c.Name</p>
+
+
+
+            }
+        </td>
+        <td><p><a href="/Worker/WorkerEdit/@q.Id">Редактировать</a></p></td>
+        <td><p><a href="/Worker/WorkerDel/@q.Id">Удалить</a></p></td>
+    </tr>
+
+        }
+
+    </table>
+</fieldset>

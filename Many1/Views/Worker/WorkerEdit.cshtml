@@ -1,0 +1,34 @@
+﻿@using Many1.Models
+@model Worker
+@{
+    ViewBag.Title = "Edit";
+}
+
+
+@using (Html.BeginForm())
+{
+
+    <fieldset>
+        <legend>Работник</legend>
+
+        @Html.HiddenFor(model => model.Id)
+
+        <div><p>Введите имя работника</p></div>
+        <div><input type="text" name="Name" required value="@Model.Name" /></div>
+        <div><p>Введите фамилию работника</p></div>
+        <div><input type="text" name="Surname" required value="@Model.Surname" /></div>
+        <div><p>Введите Отчество работника</p></div>
+        <div><input type="text" name="Patronymic" required value="@Model.Patronymic" /></div>
+        <div><p>Введите Email работника</p></div>
+        <div><input type="email" name="Email" required value="@Model.Email" /></div>
+        <div class="editor-label"><b>Проекты</b></div>
+        @foreach (Project c in ViewBag.Projects)
+        {
+            <input type="checkbox" name="selectedProjects" value="@c.Id" @(Model.Projects.Contains(c) ? "checked=\"checked\"" : "") />@c.Name <br />
+        }
+
+        <p>
+            <input type="submit" value="Сохранить" />
+        </p>
+    </fieldset>
+}
