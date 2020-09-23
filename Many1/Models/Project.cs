@@ -26,13 +26,15 @@ namespace Many1.Models
         [StringLength(20, MinimumLength = 3)]
         public string Performer { get; set; }
         public string Leader { get; set; }
+
         [DataType(DataType.Date)]
         [Display(Name = "Начальная дата")]
-
-        
         public DateTime DateStart { get; set; }
+
         [DataType(DataType.Date)]
+        [Display(Name = "Конечная дата")]
         public DateTime DateEnd { get; set; }
+
         public virtual ICollection<Worker> Workers { get; set; }
         public Project()
         {

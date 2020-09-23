@@ -62,8 +62,21 @@
         {
             <input type="checkbox" name="selectedWorkers" value="@c.Id" @(Model.Workers.Contains(c) ? "checked=\"checked\"" : "") />@c.Name <br />
         }
-        <input name="DateStart" type="date">
-        <input name="DateEnd" type="date">
+
+       <div class="editor-label">
+            @Html.LabelFor(model => model.DateStart)
+        </div>
+        <div class="editor-field">
+            @Html.EditorFor(model => model.DateStart)
+            @Html.ValidationMessageFor(model => model.DateStart)
+        </div>
+        <div class="editor-label">
+            @Html.LabelFor(model => model.DateEnd)
+        </div>
+        <div class="editor-field">
+            @Html.EditorFor(model => model.DateEnd)
+            @Html.ValidationMessageFor(model => model.DateEnd)
+        </div>
         <p>
             <input type="submit" value="Сохранить" />
         </p>

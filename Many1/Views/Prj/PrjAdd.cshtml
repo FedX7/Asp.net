@@ -13,10 +13,10 @@
 <body>
     <h3>Форма добавления проекта</h3>
     <form name='form' method="post" onsubmit='return validate()'>
-        <table>
-            <tr>
-                <td><input type="hidden" name="Leader" value=" " /> </td>
-            </tr>
+        
+            
+            <input type="hidden" name="Leader" value=" " />
+            
             <div class="editor-label">
                 @Html.LabelFor(model => model.Name)
             </div>
@@ -46,7 +46,7 @@
                 @Html.ValidationMessageFor(model => model.Priority)
             </div>
 
-        </table>
+        
         <div class="editor-label">
             @Html.LabelFor(model => model.DateStart)
         </div>
@@ -60,7 +60,7 @@
         <div class="editor-field">
             @Html.EditorFor(model => model.DateEnd)
             @Html.ValidationMessageFor(model => model.DateEnd)
-
+        </div>
             <input type="submit" value="Добавить">
 
     </form>
